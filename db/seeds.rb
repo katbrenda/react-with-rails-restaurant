@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Food.destroy_all
+
+Food.create(name: "eggplant tacos", price: 8)
+Food.create(name: "peanut butter soup", price: 15)
+
+puts "seeded foods size: #{Food.count}"
