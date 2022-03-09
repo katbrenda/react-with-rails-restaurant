@@ -12,12 +12,13 @@ const DataProvider = (props) => {
   useEffect(()=>{
     //runs when component mounts
 
+
     getFoods()
   },[])
 
 const getFoods = async()=>{
   try {
-    let res = await axios.get('api/foods')
+    let res = await axios.get('/api/foods')
     setFoods(res.data)
   }catch(err){
     alert('err getting foods')
@@ -25,6 +26,18 @@ const getFoods = async()=>{
   }
 }
 
+const deleteFood = async (id) =>{
+try{
+  let res = await axios.delete(`/api/foods/${id}`)
+  console.log(res)
+
+  let filteredFoods = foods.filter(f=> f.id !== id)
+setFoods(filteredFoods)
+
+} catch(err){
+  alert('err in deleting')
+}
+}
   // create an object that will be 'global state'
   const foodProviderThing = {
     getFoods,
